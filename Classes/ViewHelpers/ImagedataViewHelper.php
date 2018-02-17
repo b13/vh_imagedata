@@ -109,7 +109,7 @@ class ImagedataViewHelper extends AbstractViewHelper
                 'height' => $processedImage->getProperty('height'),
                 'uri' => $imageService->getImageUri($processedImage, $arguments['absolute']),
                 'alt' => $alt,
-                'title' => $title,termin
+                'title' => $title,
                 'ratio' => $processedImage->getProperty('width') / $processedImage->getProperty('height'),
                 'link' => $image->getLink(),
                 'processingInstructions' => $processingInstructions,
