@@ -1,0 +1,20 @@
+{
+	"name": "b13/vh_imagedata",
+	"type": "typo3-cms-extension",
+	"description": "Viewhelper for accessing data of a (processed) image for further use (like <img>-tag w/ lazy loading etc.)",
+	"license": [
+		"GPL-2.0-or-later"
+	],
+	"keywords": [
+		"TYPO3 CMS",
+		"B13base"
+	],
+	"autoload": {
+		"psr-4": {
+			"B13\\VhImagedata\\": "Classes/"
+		}
+	},
+	"require": {
+		"typo3/cms-core": "^8.7"
+	}
+}
