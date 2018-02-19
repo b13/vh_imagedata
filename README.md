@@ -56,6 +56,7 @@ uri | URL of the image rendered
 alt | Alt tag for the image, taken from the sys_file_record, the sys_file_reference or from the "alt"-argument of the viewhelper
 title | Title tag for the image, taken from the sys_file_record, the sys_file_reference or from the "title"-argument of the viewhelper 
 ratio | The ratio of the cropped/rendered image (width / height), meaning 1.77777 for an image with 16:9 ratio
+heightRatio | The ratio of height to width, for use in inline styles of containers for responsive images
 link | Value of the link field from sys_file_reference
 processingInstructions | Original processing instructions used for image rendering (including crop-values as array)
 processedImage | The processed file

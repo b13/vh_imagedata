@@ -111,6 +111,7 @@ class ImagedataViewHelper extends AbstractViewHelper
                 'alt' => $alt,
                 'title' => $title,
                 'ratio' => $processedImage->getProperty('width') / $processedImage->getProperty('height'),
+                'heightRatio' => $processedImage->getProperty('height') / $processedImage->getProperty('width'),
                 'link' => $image->getLink(),
                 'processingInstructions' => $processingInstructions,
                 'processedImage' => $processedImage,
