@@ -1,6 +1,7 @@
 <?php
 namespace B13\VhImagedata\ViewHelpers;
 
+use TYPO3\CMS\Core\Resource\Index\MetaDataRepository;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
@@ -38,7 +39,7 @@ class ImagedataViewHelper extends AbstractViewHelper
         $this->registerArgument('alt', 'string', 'Specifies an alternate text for an image', false);
         $this->registerArgument('title', 'string', 'Tooltip text of element');
 
-        $this->registerArgument('src', 'string', 'a path to a file, a combined FAL identifier or an uid (int). If $treatIdAsReference is set, the integer is considered the uid of the sys_file_reference record. If you already got a FAL object, consider using the $image parameter instead');
+        $this->registerArgument('src', 'string', 'a path to a file, a combined FAL identifier or a uid (int). If $treatIdAsReference is set, the integer is considered the uid of the sys_file_reference record. If you already got a FAL object, consider using the $image parameter instead');
         $this->registerArgument('treatIdAsReference', 'bool', 'given src argument is a sys_file_reference record');
         $this->registerArgument('image', 'object', 'a FAL object');
         $this->registerArgument('crop', 'string|bool', 'overrule cropping of image (setting to FALSE disables the cropping set in FileReference)');
@@ -81,6 +82,7 @@ class ImagedataViewHelper extends AbstractViewHelper
         try {
             $imageService = self::getImageService();
             $image = $imageService->getImage($src, $image, $treatIdAsReference);
+            $metaDataRepository = MetaDataRepository::getInstance();
 
             if ($cropString === null && $image->hasProperty('crop') && $image->getProperty('crop')) {
                 $cropString = $image->getProperty('crop');
@@ -115,11 +117,11 @@ class ImagedataViewHelper extends AbstractViewHelper
                 'processingInstructions' => $processingInstructions,
                 'processedImage' => $processedImage,
                 'originalImage' => $image,
+                'metaData' => $metaDataRepository->findByFileUid($image->getUid())
             ];
             if ($treatIdAsReference) {
                 $returnData['link'] = $image->getLink();
             }
-
         } catch (ResourceDoesNotExistException $e) {
             // thrown if file does not exist
         } catch (\UnexpectedValueException $e) {
