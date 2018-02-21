@@ -112,11 +112,13 @@ class ImagedataViewHelper extends AbstractViewHelper
                 'title' => $title,
                 'ratio' => $processedImage->getProperty('width') / $processedImage->getProperty('height'),
                 'heightRatio' => $processedImage->getProperty('height') / $processedImage->getProperty('width'),
-                'link' => $image->getLink(),
                 'processingInstructions' => $processingInstructions,
                 'processedImage' => $processedImage,
                 'originalImage' => $image,
             ];
+            if ($treatIdAsReference) {
+                $returnData['link'] = $image->getLink();
+            }
 
         } catch (ResourceDoesNotExistException $e) {
             // thrown if file does not exist
