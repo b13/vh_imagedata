@@ -83,6 +83,11 @@ class ImagedataViewHelper extends AbstractViewHelper
             $imageService = self::getImageService();
             $image = $imageService->getImage($src, $image, $treatIdAsReference);
             $metaDataRepository = MetaDataRepository::getInstance();
+            if ($treatIdAsReference) {
+                $metaData = $metaDataRepository->findByFileUid($image->getReferenceProperty('uid_local'));
+            } else {
+                $metaData = $metaDataRepository->findByFileUid($image->getUid());
+            }
 
             if ($cropString === null && $image->hasProperty('crop') && $image->getProperty('crop')) {
                 $cropString = $image->getProperty('crop');
@@ -106,7 +111,7 @@ class ImagedataViewHelper extends AbstractViewHelper
 
             $processedImage = $imageService->applyProcessingInstructions($image, $processingInstructions);
 
-            $returnData = [
+         $returnData = [
                 'width' => $processedImage->getProperty('width'),
                 'height' => $processedImage->getProperty('height'),
                 'uri' => $imageService->getImageUri($processedImage, $arguments['absolute']),
@@ -117,7 +122,7 @@ class ImagedataViewHelper extends AbstractViewHelper
                 'processingInstructions' => $processingInstructions,
                 'processedImage' => $processedImage,
                 'originalImage' => $image,
-                'metaData' => $metaDataRepository->findByFileUid($image->getUid())
+                'metaData' => $metaData
             ];
             if ($treatIdAsReference) {
                 $returnData['link'] = $image->getLink();
