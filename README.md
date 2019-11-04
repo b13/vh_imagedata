@@ -1,6 +1,6 @@
 # EXT:vh_imagedata
 
-## Viewhelper to build custom <img>-Tag
+## Viewhelper to build custom `<img>`-Tag
 
 This viewhelper calculates an image based on <f:image> without rendering an image tag, making the data available in the
  content of the viewhelper for manual use or rendering custom image tags. The rendering takes all crop settings into 
