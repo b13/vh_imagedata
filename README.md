@@ -9,13 +9,17 @@ This viewhelper calculates an image based on `<f:image>` without rendering an im
 ### Basic useage example
 
 ```
-<b:imagedata src="{file.uid}" treatIdAsReference="1" width="300" as="imageData">
+<html xmlns:id="http://typo3.org/ns/B13/VhImagedata/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<id:imagedata src="{file.uid}" treatIdAsReference="1" width="300" as="imageData">
     <div class="b_lazyloading__background" style="padding-bottom: {1 / imageData.ratio}%;">
         <img src="transparent.gif" data-imageurl="{imageData.uri}" width="{imageData.width}" height="{imageData.height}" 
             class="b_lazyloading__image bJS_lazyloading" 
             alt="{imageData.alt}" title="{imageData.title}" />
     </div>
-</b:imagedata>
+</id:imagedata>
+
+</html>
 ```
 
 ### Allowed attributes
@@ -68,7 +72,10 @@ Use Composer to add to your project:
 
 `composer require b13/vh_imagedata`
 
-No further configuration needed.
+Set the namespace the ViewHelper in your Fluid template where needed:
 
+```
+<html xmlns:id="http://typo3.org/ns/B13/VhImagedata/ViewHelpers" data-namespace-typo3-fluid="true">
+```
 
  
