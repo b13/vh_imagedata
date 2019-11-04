@@ -2,9 +2,9 @@
 
 ## Viewhelper to build custom `<img>`-Tag
 
-This viewhelper calculates an image based on <f:image> without rendering an image tag, making the data available in the
+This viewhelper calculates an image based on `<f:image>` without rendering an image tag, making the data available in the
  content of the viewhelper for manual use or rendering custom image tags. The rendering takes all crop settings into 
- account. The Viewhelper is automatically registered into the `b` namespace.
+ account. 
  
 ### Basic useage example
 

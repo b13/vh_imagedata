@@ -14,7 +14,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 /**
  * Renders an image as you normally would using <f:image> without generating the <img>-tag but assigning all image data
- * to a variable for use inside the viewhelpers tag.
+ * to a variable for use inside the ViewHelpers tag.
  *
  * See README.md for details
  *
