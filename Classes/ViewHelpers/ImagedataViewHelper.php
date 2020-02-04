@@ -69,9 +69,9 @@ class ImagedataViewHelper extends AbstractViewHelper
      */
     public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
     {
-        $src = $arguments['src'];
+        $src = (string)$arguments['src'];
         $image = $arguments['image'];
-        $treatIdAsReference = $arguments['treatIdAsReference'];
+        $treatIdAsReference = (bool)$arguments['treatIdAsReference'];
         $cropString = $arguments['crop'];
         $returnData = [];
 
